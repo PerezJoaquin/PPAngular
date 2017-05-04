@@ -1,0 +1,37 @@
+<body style="background-color:beige">
+<table style="width:100%"> 
+  <tr>
+    <th>ID</th>
+    <th>NOMBRE</th>
+    <th>APELLIDO</th>
+    <th>DNI</th>
+    <th>FOTO</th>
+    <th>SEXO</th>
+    <th>PASSWORD</th>
+    <th>ACCION</th>
+  </tr>
+    <tr *ngFor = "let item of personas; let i = index">
+        <td>{{item.id}}</td>
+        <td>{{item.nombre}}</td>
+        <td>{{item.apellido}}</td>
+        <td>{{item.dni}}</td> 
+        <td><img src="../assets/fotos/{{item.foto}}" style="height:100px"></td> 
+        <td>{{item.sexo}}</td> 
+        <td>{{item.password}}</td>
+        <td><input type="button" value="BORRAR" (click)="borrar(i)"></td>
+        
+    </tr>
+  </table>
+  <br><br><br>
+  <form style="background-color:cadetblue;border-radius:15px;padding:15px" *ngIf="most" (ngSubmit)="Agregar(alta)">
+    <input type="text" [(ngModel)]="alta.nombre" name="nombre" placeholder="Nombre"><br>
+    <input type="text" [(ngModel)]="alta.apellido" name="apellido" placeholder="Apellido"><br>
+    <input type="text" [(ngModel)]="alta.dni" name="dni" placeholder="DNI"><br>
+    <input type="text" [(ngModel)]="alta.foto" name="foto" placeholder="FOTO"><br>
+    <input type="text" [(ngModel)]="alta.sexo" name="sexo" placeholder="Sexo"><br>
+    <input type="text" [(ngModel)]="alta.password" name="password" placeholder="Password"><br>
+    <input type="submit">
+  </form>
+  <input type="checkbox" value="true" name="editar" (click)="mostrar()">Editar
+  
+</body>
